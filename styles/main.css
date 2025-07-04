@@ -1,0 +1,216 @@
+/* Main Styles - Base Layout and Typography */
+
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-system);
+  background-color: var(--background);
+  color: var(--ios-label);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* App Container */
+.app-container {
+  min-height: 100vh;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation */
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--ios-separator);
+  z-index: var(--z-nav);
+}
+
+.nav-content {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: var(--nav-height);
+  min-height: calc(100vh - var(--nav-height));
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.hero-title {
+  font-family: var(--font-system);
+  font-weight: var(--weight-medium);
+  font-size: var(--font-hero);
+  letter-spacing: var(--spacing-hero);
+  line-height: 34px;
+  color: var(--ios-label);
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+/* Input Container */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Quick Actions */
+.quick-actions {
+  width: 100%;
+  max-width: 600px;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Typography Classes */
+.app-title {
+  font-family: var(--font-system);
+  font-weight: var(--weight-semibold);
+  font-size: var(--font-title);
+  letter-spacing: var(--spacing-title);
+  color: var(--ios-label);
+}
+
+.status-text {
+  font-family: var(--font-text);
+  font-weight: var(--weight-regular);
+  font-size: var(--font-status);
+  letter-spacing: var(--spacing-text);
+  color: var(--ios-gray);
+}
+
+.card-label {
+  font-family: var(--font-text);
+  font-weight: var(--weight-medium);
+  font-size: var(--font-card);
+  letter-spacing: var(--spacing-text);
+  color: var(--ios-label);
+}
+
+.button-text {
+  font-family: var(--font-text);
+  font-weight: var(--weight-semibold);
+  font-size: var(--font-button);
+  letter-spacing: var(--spacing-text);
+}
+
+/* Responsive Design for iPad */
+@media screen and (max-width: 1024px) {
+  :root {
+    --container-padding: 16px;
+    --input-width: 90vw;
+    --button-width: 260px;
+  }
+  
+  .hero-title {
+    font-size: 24px;
+    margin-bottom: 32px;
+  }
+  
+  .actions-grid {
+    gap: 16px;
+  }
+  
+  .hero-section {
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --card-width: 160px;
+    --card-height: 100px;
+  }
+  
+  .actions-grid {
+    gap: 12px;
+  }
+  
+  .hero-title {
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
+
+/* Accessibility and Touch Optimization */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High DPI Display Optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .navigation {
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+  }
+} 

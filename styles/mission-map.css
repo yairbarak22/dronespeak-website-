@@ -1,0 +1,388 @@
+/* Mission Planning Map Styles - Leaflet Customizations */
+
+/* Map Container Styles */
+.leaflet-container {
+  background: #f8f9fa;
+  outline: none;
+}
+
+.leaflet-tile-pane {
+  filter: contrast(1.1) brightness(0.95);
+}
+
+/* Custom Map Controls */
+.leaflet-control-container {
+  font-family: var(--font-system);
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 2px 8px var(--shadow-light) !important;
+}
+
+.leaflet-control-zoom a {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--ios-separator) !important;
+  color: var(--ios-gray) !important;
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 34px !important;
+  font-size: 18px !important;
+  font-weight: 300 !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: white !important;
+  color: var(--ios-blue) !important;
+  border-color: var(--ios-blue) !important;
+}
+
+.leaflet-control-zoom-in {
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.leaflet-control-zoom-out {
+  border-radius: 0 0 8px 8px !important;
+  border-top: none !important;
+}
+
+/* Attribution Control */
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  font-size: 11px !important;
+  color: var(--ios-gray) !important;
+  border: 1px solid var(--ios-separator) !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--ios-blue) !important;
+}
+
+/* Custom Markers and Overlays */
+.leaflet-marker-icon {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 12px !important;
+  box-shadow: 0 4px 16px var(--shadow-medium) !important;
+  border: 1px solid var(--ios-separator) !important;
+}
+
+.leaflet-popup-content {
+  margin: 16px !important;
+  font-family: var(--font-text) !important;
+  font-size: 14px !important;
+  color: var(--ios-label) !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid var(--ios-separator) !important;
+  box-shadow: 0 2px 4px var(--shadow-light) !important;
+}
+
+.leaflet-popup-close-button {
+  color: var(--ios-gray) !important;
+  font-size: 18px !important;
+  padding: 8px !important;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 16px !important;
+  border-radius: 6px !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.leaflet-popup-close-button:hover {
+  background: var(--ios-gray-light) !important;
+  color: var(--ios-label) !important;
+}
+
+/* Custom Waypoint Markers */
+.waypoint-marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ios-blue);
+  border: 3px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: var(--weight-semibold);
+  font-size: 14px;
+  font-family: var(--font-system);
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.waypoint-marker:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+}
+
+.waypoint-marker.completed {
+  background: var(--ios-green);
+  box-shadow: 0 2px 8px rgba(52, 199, 89, 0.3);
+}
+
+.waypoint-marker.active {
+  background: var(--ios-orange);
+  box-shadow: 0 2px 8px rgba(255, 149, 0, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 2px 8px rgba(255, 149, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 2px 16px rgba(255, 149, 0, 0.6), 0 0 0 8px rgba(255, 149, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 2px 8px rgba(255, 149, 0, 0.3);
+  }
+}
+
+/* Drone Position Marker */
+.drone-marker {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--ios-green);
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(52, 199, 89, 0.4);
+  animation: drone-pulse 3s infinite;
+  position: relative;
+}
+
+.drone-marker::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+@keyframes drone-pulse {
+  0% {
+    box-shadow: 0 2px 8px rgba(52, 199, 89, 0.4);
+  }
+  50% {
+    box-shadow: 0 2px 16px rgba(52, 199, 89, 0.6), 0 0 0 12px rgba(52, 199, 89, 0.1);
+  }
+  100% {
+    box-shadow: 0 2px 8px rgba(52, 199, 89, 0.4);
+  }
+}
+
+/* Flight Path Styles */
+.flight-path {
+  stroke: var(--ios-blue);
+  stroke-width: 3;
+  stroke-dasharray: 10, 10;
+  stroke-linecap: round;
+  fill: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 122, 255, 0.2));
+  animation: dash 20s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.flight-path-completed {
+  stroke: var(--ios-green);
+  stroke-dasharray: none;
+  animation: none;
+}
+
+/* Map Overlay Elements */
+.map-overlay {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--ios-separator);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  z-index: 1000;
+  font-family: var(--font-text);
+}
+
+.altitude-indicator {
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.altitude-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--ios-blue);
+}
+
+.altitude-text {
+  font-size: 14px;
+  font-weight: var(--weight-medium);
+  color: var(--ios-label);
+}
+
+.distance-indicator {
+  bottom: 60px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.distance-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--ios-green);
+}
+
+.distance-text {
+  font-size: 14px;
+  font-weight: var(--weight-medium);
+  color: var(--ios-label);
+}
+
+/* Map Loading State */
+.map-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--ios-gray-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  border-radius: 12px;
+}
+
+.map-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--ios-separator);
+  border-top: 3px solid var(--ios-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.map-loading-text {
+  margin-top: 16px;
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: var(--ios-gray);
+}
+
+/* Responsive Map Adjustments */
+@media screen and (max-width: 768px) {
+  .leaflet-control-zoom a {
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 30px !important;
+    font-size: 16px !important;
+  }
+  
+  .waypoint-marker {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .drone-marker {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .drone-marker::before {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .map-overlay {
+    padding: 8px;
+    font-size: 12px;
+  }
+  
+  .altitude-indicator,
+  .distance-indicator {
+    gap: 6px;
+  }
+  
+  .altitude-icon,
+  .distance-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .leaflet-control-zoom a {
+    border-width: 2px !important;
+  }
+  
+  .waypoint-marker {
+    border-width: 4px;
+  }
+  
+  .drone-marker {
+    border-width: 3px;
+  }
+  
+  .map-overlay {
+    border-width: 2px;
+    background: white;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .waypoint-marker.active {
+    animation: none;
+  }
+  
+  .drone-marker {
+    animation: none;
+  }
+  
+  .flight-path {
+    animation: none;
+  }
+  
+  .map-loading-spinner {
+    animation: none;
+    border-top-color: var(--ios-blue);
+  }
+} 

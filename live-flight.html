@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="DroneSpeak Live Flight">
+    <title>Live Flight - DroneSpeak</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/live-flight.css">
+    <link rel="stylesheet" href="styles/live-flight-components.css">
+    <link rel="stylesheet" href="styles/live-flight-animations.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <button class="back-button" onclick="history.back()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="#007AFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Back</span>
+                    </button>
+                </div>
+                <div class="nav-center">
+                    <h1 class="page-title">Live Flight Execution</h1>
+                </div>
+                <div class="nav-right">
+                    <div class="mission-timer">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="7" stroke="#FF9500" stroke-width="1.5"/>
+                            <path d="M8 4v4l3 2" stroke="#FF9500" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span id="remainingTime">5:30 remaining</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mission Status Bar -->
+        <section class="status-bar">
+            <div class="status-content">
+                <div class="status-left">
+                    <div class="status-indicator flying">
+                        <div class="status-dot"></div>
+                        <span class="status-label">Mission in Progress</span>
+                    </div>
+                    <div class="status-description">Photographing building from north side</div>
+                </div>
+                <div class="status-right">
+                    <div class="progress-container">
+                        <div class="progress-label">Progress</div>
+                        <div class="progress-wrapper">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="missionProgress" style="width: 50%"></div>
+                            </div>
+                            <span class="progress-text" id="progressText">2/4 photos completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="flight-content">
+            <!-- Real-time Map -->
+            <div class="map-container">
+                <div id="live-map"></div>
+                <div class="map-overlays">
+                    <div class="drone-info-overlay">
+                        <div class="drone-status-indicator">
+                            <div class="drone-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" fill="#34C759"/>
+                                    <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="drone-info">
+                                <span class="drone-status">Flying</span>
+                                <span class="drone-location" id="droneLocation">32.0855°N, 34.7820°E</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="camera-fov-overlay">
+                        <div class="fov-indicator">
+                            <span class="fov-label">Camera FOV</span>
+                            <span class="fov-angle">84° wide</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Data Panel -->
+            <aside class="live-data-panel">
+                <!-- Flight Telemetry -->
+                <section class="panel-section telemetry-section">
+                    <h3 class="section-title">Flight Telemetry</h3>
+                    <div class="telemetry-grid">
+                        <div class="telemetry-item altitude-item">
+                            <div class="telemetry-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2L2 7h20l-10-5z" stroke="#007AFF" stroke-width="1.5"/>
+                                    <path d="M12 22v-15" stroke="#007AFF" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <div class="telemetry-content">
+                                <span class="telemetry-label">Altitude</span>
+                                <span class="telemetry-value large" id="altitude">17.2m</span>
+                            </div>
+                        </div>
+                        
+                        <div class="telemetry-item">
+                            <div class="telemetry-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#FF9500" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <div class="telemetry-content">
+                                <span class="telemetry-label">Speed</span>
+                                <span class="telemetry-value" id="speed">3.5 m/s</span>
+                            </div>
+                        </div>
+                        
+                        <div class="telemetry-item battery-item">
+                            <div class="telemetry-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <rect x="2" y="7" width="18" height="10" rx="2" stroke="#34C759" stroke-width="1.5"/>
+                                    <rect x="22" y="10" width="2" height="4" rx="1" fill="#34C759"/>
+                                </svg>
+                            </div>
+                            <div class="telemetry-content">
+                                <span class="telemetry-label">Battery</span>
+                                <div class="battery-display">
+                                    <div class="battery-indicator">
+                                        <div class="battery-fill" id="batteryFill" style="width: 68%"></div>
+                                    </div>
+                                    <span class="battery-text" id="batteryText">68%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="telemetry-item">
+                            <div class="telemetry-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="#8E8E93" stroke-width="1.5"/>
+                                    <path d="M12 8v4M8 16h8" stroke="#8E8E93" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <div class="telemetry-content">
+                                <span class="telemetry-label">GPS Signal</span>
+                                <div class="signal-strength">
+                                    <div class="signal-bars">
+                                        <div class="signal-bar active"></div>
+                                        <div class="signal-bar active"></div>
+                                        <div class="signal-bar active"></div>
+                                        <div class="signal-bar active"></div>
+                                        <div class="signal-bar active"></div>
+                                    </div>
+                                    <span class="signal-text">Excellent</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Camera Feed -->
+                <section class="panel-section camera-section">
+                    <h3 class="section-title">Live Camera</h3>
+                    <div class="camera-feed">
+                        <div class="video-container">
+                            <div class="video-placeholder">
+                                <div class="recording-indicator">
+                                    <div class="recording-dot"></div>
+                                    <span class="recording-text">REC</span>
+                                </div>
+                                <div class="video-content">
+                                    <div class="building-silhouette">
+                                        <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
+                                            <rect x="10" y="20" width="100" height="50" fill="#E0E0E0"/>
+                                            <rect x="20" y="30" width="15" height="20" fill="#B0B0B0"/>
+                                            <rect x="40" y="25" width="15" height="25" fill="#B0B0B0"/>
+                                            <rect x="60" y="30" width="15" height="20" fill="#B0B0B0"/>
+                                            <rect x="80" y="25" width="15" height="25" fill="#B0B0B0"/>
+                                        </svg>
+                                    </div>
+                                    <div class="crosshair">
+                                        <div class="crosshair-h"></div>
+                                        <div class="crosshair-v"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="camera-controls">
+                                <button class="camera-btn" id="captureBtn">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.5"/>
+                                        <circle cx="10" cy="10" r="3" fill="white"/>
+                                    </svg>
+                                </button>
+                                <div class="camera-info">
+                                    <span class="camera-mode">Photo Mode</span>
+                                    <span class="camera-settings">ISO 100 • 1/250s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Digital Pilot Decisions -->
+                <section class="panel-section decisions-section">
+                    <h3 class="section-title">Digital Pilot Decisions</h3>
+                    <div class="decisions-log" id="decisionsLog">
+                        <div class="decision-item recent">
+                            <div class="decision-header">
+                                <span class="decision-time">14:32:15</span>
+                                <div class="decision-type wind">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M2 8h8M6 4l4 4-4 4" stroke="#FF9500" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="decision-text">Detected strong wind - reducing speed to 2 m/s for stability</span>
+                        </div>
+                        
+                        <div class="decision-item">
+                            <div class="decision-header">
+                                <span class="decision-time">14:31:45</span>
+                                <div class="decision-type camera">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <rect x="2" y="4" width="12" height="8" rx="1" stroke="#007AFF" stroke-width="1.5"/>
+                                        <circle cx="8" cy="8" r="2" stroke="#007AFF" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="decision-text">Approaching waypoint 2 - adjusting camera angle for optimal shot</span>
+                        </div>
+                        
+                        <div class="decision-item">
+                            <div class="decision-header">
+                                <span class="decision-time">14:31:20</span>
+                                <div class="decision-type success">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <circle cx="8" cy="8" r="6" stroke="#34C759" stroke-width="1.5"/>
+                                        <path d="M6 8l1.5 1.5L11 6" stroke="#34C759" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="decision-text">Photo 1 captured successfully - moving to next position</span>
+                        </div>
+                        
+                        <div class="decision-item">
+                            <div class="decision-header">
+                                <span class="decision-time">14:30:55</span>
+                                <div class="decision-type navigation">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M8 2L2 14h12L8 2z" stroke="#8E8E93" stroke-width="1.5"/>
+                                        <path d="M8 6v4M8 12h.01" stroke="#8E8E93" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="decision-text">Reached waypoint 1 - positioning for north side photography</span>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+        </main>
+
+        <!-- Emergency Controls -->
+        <footer class="emergency-controls">
+            <div class="emergency-buttons">
+                <button class="emergency-btn stop-btn" onclick="emergencyStop()">
+                    <div class="btn-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect x="6" y="6" width="12" height="12" rx="2" fill="white"/>
+                        </svg>
+                    </div>
+                    <span class="btn-text">STOP IMMEDIATELY</span>
+                </button>
+                
+                <button class="emergency-btn return-btn" onclick="returnToBase()">
+                    <div class="btn-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m0 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="btn-text">RETURN TO BASE</span>
+                </button>
+                
+                <button class="emergency-btn manual-btn" onclick="manualOverride()">
+                    <div class="btn-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.05 9 10 5.16-.95 9-4.45 9-10V7l-10-5z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="btn-text">MANUAL OVERRIDE</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Our JavaScript -->
+    <script src="scripts/live-flight-map.js"></script>
+    <script src="scripts/live-flight-interactions.js"></script>
+</body>
+</html> 

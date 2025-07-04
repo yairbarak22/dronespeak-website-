@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DroneSpeak - Investor Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-up': 'fadeUp 0.8s ease-out',
+                        'slide-in': 'slideIn 1s ease-out',
+                        'number-count': 'numberCount 2s ease-out',
+                        'apple-bounce': 'appleBounce 0.6s ease-out',
+                    },
+                    fontFamily: {
+                        'sf-pro': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a40 35%, #2d2d60 100%);
+            --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --accent-gradient: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.6);
+        }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+            background: var(--primary-gradient);
+            letter-spacing: -0.02em;
+            font-feature-settings: 'kern' 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .apple-gradient {
+            background: var(--secondary-gradient);
+            position: relative;
+        }
+        
+        .apple-gradient::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .dark-apple {
+            background: var(--primary-gradient);
+            position: relative;
+        }
+        
+        .dark-apple::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 70% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .glass-apple {
+            background: var(--glass-bg);
+            backdrop-filter: blur(32px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-apple-premium {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+        
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes numberCount {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes appleBounce {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes fillBar {
+            from { width: 0; }
+            to { width: var(--width); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes growBar {
+            from { height: 0; }
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            margin: 3rem 0;
+        }
+        
+        .section-divider-premium {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5), transparent);
+            margin: 4rem 0;
+            position: relative;
+        }
+        
+        .section-divider-premium::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            filter: blur(2px);
+        }
+        
+        .metric-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.1);
+        }
+        
+        .metric-card {
+            position: relative;
+        }
+        
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1), transparent);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .metric-card:hover::before {
+            opacity: 1;
+        }
+        
+        .slide-content {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        .slide-content + .slide-content {
+            margin-top: -4rem;
+        }
+        
+        .section-spacing {
+            padding: 6rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 3rem 0;
+            }
+            .section-spacing {
+                padding: 4rem 0;
+            }
+        }
+        
+        .number-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+        }
+        
+        .premium-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .section-title {
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-apple">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold">DroneSpeak</div>
+                <div class="flex space-x-8">
+                    <a href="#overview" class="text-gray-300 hover:text-white transition-colors">Overview</a>
+                    <a href="#market" class="text-gray-300 hover:text-white transition-colors">Market</a>
+                    <a href="#product" class="text-gray-300 hover:text-white transition-colors">Product</a>
+                    <a href="#financials" class="text-gray-300 hover:text-white transition-colors">Financials</a>
+                    <a href="#team" class="text-gray-300 hover:text-white transition-colors">Team</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Slide -->
+    <section class="slide-content apple-gradient">
+        <div class="text-center px-6">
+            <div class="animate-apple-bounce">
+                <div class="mb-8">
+                    <div class="w-24 h-24 mx-auto mb-6 glass-apple-premium rounded-2xl flex items-center justify-center">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.5 8.5L22 9L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9L8.5 8.5L12 2Z" fill="#667eea"/>
+                        </svg>
+                    </div>
+                </div>
+                <h1 class="text-7xl md:text-9xl font-black mb-8 section-title">
+                    DroneSpeak
+                </h1>
+                <h2 class="text-3xl md:text-5xl font-light mb-12 text-white/90">
+                    The Future of Autonomous Flight
+                </h2>
+                <p class="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed font-medium">
+                    Transforming any drone into an AI-powered autonomous mission specialist through natural language commands
+                </p>
+                <div class="mt-16">
+                    <div class="glass-apple-premium rounded-2xl py-6 px-8 inline-block">
+                        <div class="text-lg text-white/60 mb-2">Series A Funding Round</div>
+                        <div class="text-4xl font-bold premium-text">$5M Target</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider-premium"></div>
+
+    <!-- Problem Slide -->
+    <section id="overview" class="slide-content dark-apple">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="animate-slide-in">
+                    <h2 class="text-5xl font-bold mb-8 section-title">The Problem</h2>
+                    <div class="space-y-6 text-xl text-gray-300">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-2 h-2 bg-red-500 rounded-full mt-3"></div>
+                            <p>Drone operations require extensive technical expertise</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-2 h-2 bg-red-500 rounded-full mt-3"></div>
+                            <p>Complex waypoint programming limits operational efficiency</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-2 h-2 bg-red-500 rounded-full mt-3"></div>
+                            <p>$127B drone market hindered by accessibility barriers</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="animate-fade-up">
+                    <div class="glass-apple rounded-3xl p-8">
+                        <h3 class="text-2xl font-semibold mb-6">Current Workflow</h3>
+                        <div class="space-y-4">
+                            <div class="bg-red-500/20 p-4 rounded-xl border-l-4 border-red-500">
+                                <div class="font-semibold">1. Manual Planning</div>
+                                <div class="text-sm text-gray-400">2-4 hours per mission</div>
+                            </div>
+                            <div class="bg-yellow-500/20 p-4 rounded-xl border-l-4 border-yellow-500">
+                                <div class="font-semibold">2. Technical Setup</div>
+                                <div class="text-sm text-gray-400">30-60 minutes</div>
+                            </div>
+                            <div class="bg-orange-500/20 p-4 rounded-xl border-l-4 border-orange-500">
+                                <div class="font-semibold">3. Expert Operator Required</div>
+                                <div class="text-sm text-gray-400">$80-120/hour</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider-premium"></div>
+
+    <!-- Solution Slide -->
+    <section class="slide-content bg-gradient-to-br from-blue-900 to-purple-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl font-bold mb-8 animate-fade-up section-title">Our Solution</h2>
+                <p class="text-2xl text-blue-100 animate-fade-up" style="animation-delay: 0.2s;">
+                    AI-powered natural language interface for autonomous drone missions
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="metric-card glass-apple-premium rounded-3xl p-8 text-center animate-fade-up" style="animation-delay: 0.4s;">
+                    <div class="w-16 h-16 mx-auto mb-6 glass-apple rounded-2xl flex items-center justify-center">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1.5V6H9V1.5L3 7V9H21ZM18 16C18 17.1 17.1 18 16 18H8C6.9 18 6 17.1 6 16V11H18V16ZM16 13H8V15H16V13Z" fill="#667eea"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Natural Language</h3>
+                    <p class="text-gray-300 mb-6">"Patrol the perimeter and check for breaches"</p>
+                    <div class="mt-6">
+                        <div class="text-3xl font-bold number-highlight">95%</div>
+                        <div class="text-sm text-gray-400">Accuracy Rate</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card glass-apple-premium rounded-3xl p-8 text-center animate-fade-up" style="animation-delay: 0.6s;">
+                    <div class="w-16 h-16 mx-auto mb-6 glass-apple rounded-2xl flex items-center justify-center">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2.05V5.08C16.39 5.57 19 8.47 19 12C19 12.9 18.82 13.75 18.5 14.54L21.12 16.07C21.68 14.83 22 13.45 22 12C22 6.82 18.05 2.55 13 2.05ZM12 19C7.58 19 4 15.42 4 11C4 7.95 5.81 5.32 8.5 4.28V1.16C4.63 2.41 2 6.4 2 11C2 16.52 6.48 21 12 21C13.55 21 15.03 20.68 16.38 20.12L14.26 17.5C13.58 18.36 12.84 19 12 19Z" fill="#667eea"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Instant Deployment</h3>
+                    <p class="text-gray-300 mb-6">From command to flight in under 30 seconds</p>
+                    <div class="mt-6">
+                        <div class="text-3xl font-bold number-highlight">30s</div>
+                        <div class="text-sm text-gray-400">Setup Time</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card glass-apple-premium rounded-3xl p-8 text-center animate-fade-up" style="animation-delay: 0.8s;">
+                    <div class="w-16 h-16 mx-auto mb-6 glass-apple rounded-2xl flex items-center justify-center">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.7 19L13.6 9.9C14.5 7.6 14 4.9 12.1 3C10.1 1 7.1 0.6 4.7 1.7L9 6L6 9L1.6 4.7C0.4 7.1 0.9 10.1 2.9 12.1C4.8 14 7.5 14.5 9.8 13.6L18.9 22.7C19.3 23.1 19.9 23.1 20.3 22.7L22.6 20.4C23.1 20 23.1 19.3 22.7 19Z" fill="#667eea"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Universal Compatibility</h3>
+                    <p class="text-gray-300 mb-6">Works with existing DJI, ArduPilot & Autel drones</p>
+                    <div class="mt-6">
+                        <div class="text-3xl font-bold number-highlight">85%</div>
+                        <div class="text-sm text-gray-400">Market Coverage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider-premium"></div>
+
+    <!-- Market Slide -->
+    <section id="market" class="slide-content dark-apple">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl font-bold mb-8 section-title">Market Opportunity</h2>
+                <p class="text-2xl text-gray-300">A massive and rapidly growing market</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="metric-card glass-apple-premium rounded-3xl p-8">
+                        <div class="text-6xl font-bold number-highlight mb-4 animate-number-count">$127B</div>
+                        <h3 class="text-2xl font-semibold mb-2">Total Addressable Market</h3>
+                        <p class="text-gray-400">Global commercial drone market by 2025</p>
+                        <div class="mt-4 h-2 bg-gray-700 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" style="width: 85%; animation: fillBar 2s ease-out;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card glass-apple-premium rounded-3xl p-8">
+                        <div class="text-6xl font-bold number-highlight mb-4 animate-number-count">42%</div>
+                        <h3 class="text-2xl font-semibold mb-2">Annual Growth Rate</h3>
+                        <p class="text-gray-400">CAGR 2023-2030</p>
+                        <div class="mt-4 flex items-center space-x-2">
+                            <div class="flex-1 h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-green-500 to-blue-500 rounded-full" style="width: 42%; animation: fillBar 2.5s ease-out;"></div>
+                            </div>
+                            <span class="text-sm text-gray-400">Industry Avg: 28%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-bold mb-8">Key Market Segments</h3>
+                    <div class="space-y-4">
+                        <div class="glass-apple-premium rounded-xl p-6 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent"></div>
+                            <div class="relative">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-xl font-semibold">Defense & Security</span>
+                                    <span class="text-2xl font-bold number-highlight">$45B</span>
+                                </div>
+                                <div class="text-gray-400 mb-3">Military, Border Control, Surveillance</div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style="width: 35%; animation: fillBar 1.5s ease-out;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-apple-premium rounded-xl p-6 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-green-500/10 to-transparent"></div>
+                            <div class="relative">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-xl font-semibold">Infrastructure Inspection</span>
+                                    <span class="text-2xl font-bold number-highlight">$31B</span>
+                                </div>
+                                <div class="text-gray-400 mb-3">Energy, Construction, Utilities</div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full" style="width: 24%; animation: fillBar 1.8s ease-out;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-apple-premium rounded-xl p-6 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-transparent"></div>
+                            <div class="relative">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-xl font-semibold">Logistics & Delivery</span>
+                                    <span class="text-2xl font-bold number-highlight">$28B</span>
+                                </div>
+                                <div class="text-gray-400 mb-3">Last-mile delivery, Warehousing</div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full" style="width: 22%; animation: fillBar 2.1s ease-out;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-apple-premium rounded-xl p-6 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-red-500/10 to-transparent"></div>
+                            <div class="relative">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-xl font-semibold">Public Safety</span>
+                                    <span class="text-2xl font-bold number-highlight">$23B</span>
+                                </div>
+                                <div class="text-gray-400 mb-3">Police, Fire, Emergency Response</div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-green-500 to-teal-500 h-2 rounded-full" style="width: 18%; animation: fillBar 2.4s ease-out;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider-premium"></div>
+
+    <!-- Competition Slide -->
+    <section class="slide-content bg-gradient-to-br from-gray-900 to-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl font-bold mb-8 section-title">Competitive Landscape</h2>
+                <p class="text-2xl text-gray-300">We lead in accessibility and AI integration</p>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full glass-apple-premium rounded-3xl overflow-hidden">
+                    <thead class="bg-gradient-to-r from-blue-500/20 to-purple-500/20">
+                        <tr class="text-left">
+                            <th class="p-6 text-xl font-semibold">Company</th>
+                            <th class="p-6 text-xl font-semibold">Natural Language</th>
+                            <th class="p-6 text-xl font-semibold">Existing Hardware</th>
+                            <th class="p-6 text-xl font-semibold">Setup Time</th>
+                            <th class="p-6 text-xl font-semibold">Target Market</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-lg">
+                        <tr class="border-b border-white/10 bg-gradient-to-r from-blue-500/20 to-purple-500/20">
+                            <td class="p-6 font-bold premium-text">DroneSpeak</td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-300 border border-green-500/30">✓ Advanced AI</span></td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-300 border border-green-500/30">✓ Universal</span></td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-300 border border-green-500/30">✓ <30 seconds</span></td>
+                            <td class="p-6">Enterprise + Consumer</td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                            <td class="p-6 font-semibold">Skydio</td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-red-500/20 text-red-300 border border-red-500/30">✗ Manual</span></td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-red-500/20 text-red-300 border border-red-500/30">✗ Proprietary only</span></td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">⚠ 15+ minutes</span></td>
+                            <td class="p-6">Enterprise</td>
+                        </tr>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                            <td class="p-6 font-semibold">Elbit (Dominion-X)</td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-red-500/20 text-red-300 border border-red-500/30">✗ Complex interface</span></td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-red-500/20 text-red-300 border border-red-500/30">✗ Military only</span></td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-red-500/20 text-red-300 border border-red-500/30">✗ Hours</span></td>
+                            <td class="p-6">Defense</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-6 font-semibold">Percepto</td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-red-500/20 text-red-300 border border-red-500/30">✗ Pre-programmed</span></td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">⚠ Limited models</span></td>
+                            <td class="p-6"><span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">⚠ 30+ minutes</span></td>
+                            <td class="p-6">Industrial</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider-premium"></div>
+
+    <!-- Financials Slide -->
+    <section id="financials" class="slide-content apple-gradient">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl font-bold mb-8 section-title">Financial Projections</h2>
+                <p class="text-2xl text-white/80">Conservative growth estimates with proven scalability</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="space-y-8">
+                    <div class="glass-apple rounded-3xl p-8">
+                        <h3 class="text-3xl font-bold mb-6">Revenue Model</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">SaaS Subscription</span>
+                                <span class="text-xl font-bold">$200-800/month</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">Enterprise Licenses</span>
+                                <span class="text-xl font-bold">$50K-200K/year</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">Hardware Partnerships</span>
+                                <span class="text-xl font-bold">15% revenue share</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-apple rounded-3xl p-8">
+                        <h3 class="text-3xl font-bold mb-6">Use of Funds</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">R&D / AI Development</span>
+                                <span class="text-xl font-bold">40%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">Sales & Marketing</span>
+                                <span class="text-xl font-bold">35%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">Operations & Hiring</span>
+                                <span class="text-xl font-bold">25%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <!-- Growth Chart -->
+                    <div class="glass-apple-premium rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">Revenue Growth Trajectory</h3>
+                        <div class="space-y-6">
+                            <div class="relative">
+                                <div class="flex justify-between text-sm text-gray-400 mb-2">
+                                    <span>Year 1</span><span>Year 2</span><span>Year 3</span><span>Year 5</span>
+                                </div>
+                                <div class="flex items-end space-x-4 h-40">
+                                    <div class="flex-1 flex flex-col justify-end">
+                                        <div class="bg-gradient-to-t from-blue-500 to-purple-500 rounded-t" style="height: 20%; animation: growBar 2s ease-out;"></div>
+                                        <div class="text-center mt-2">
+                                            <div class="text-xl font-bold number-highlight">$2M</div>
+                                            <div class="text-xs text-gray-400">50 Customers</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 flex flex-col justify-end">
+                                        <div class="bg-gradient-to-t from-purple-500 to-pink-500 rounded-t" style="height: 40%; animation: growBar 2.5s ease-out;"></div>
+                                        <div class="text-center mt-2">
+                                            <div class="text-xl font-bold number-highlight">$8M</div>
+                                            <div class="text-xs text-gray-400">200 Customers</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 flex flex-col justify-end">
+                                        <div class="bg-gradient-to-t from-pink-500 to-red-500 rounded-t" style="height: 70%; animation: growBar 3s ease-out;"></div>
+                                        <div class="text-center mt-2">
+                                            <div class="text-xl font-bold number-highlight">$25M</div>
+                                            <div class="text-xs text-gray-400">500+ Customers</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 flex flex-col justify-end">
+                                        <div class="bg-gradient-to-t from-orange-500 to-yellow-500 rounded-t" style="height: 100%; animation: growBar 3.5s ease-out;"></div>
+                                        <div class="text-center mt-2">
+                                            <div class="text-xl font-bold number-highlight">$100M</div>
+                                            <div class="text-xs text-gray-400">Market Leader</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-apple rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold mb-4">Key Metrics</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span>Customer Acquisition Cost</span>
+                                <span class="font-bold">$1,200</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Lifetime Value</span>
+                                <span class="font-bold">$24,000</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>LTV/CAC Ratio</span>
+                                <span class="font-bold text-green-400">20:1</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Gross Margin</span>
+                                <span class="font-bold text-green-400">85%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider-premium"></div>
+
+    <!-- Team Slide -->
+    <section id="team" class="slide-content dark-apple">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl font-bold mb-8 section-title">Leadership Team</h2>
+                <p class="text-2xl text-gray-300">Proven experts in AI, aerospace, and enterprise software</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="metric-card glass-apple-premium rounded-3xl p-8 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10"></div>
+                    <div class="relative">
+                        <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="white"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">CEO & Co-Founder</h3>
+                        <p class="text-blue-400 font-semibold mb-4">AI & Robotics Expert</p>
+                        <p class="text-gray-400 text-sm mb-4">Former Google AI, 10+ years in autonomous systems</p>
+                        <div class="flex justify-center space-x-2">
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">Stanford PhD</span>
+                            <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs">15 Patents</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="metric-card glass-apple-premium rounded-3xl p-8 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-blue-500/10"></div>
+                    <div class="relative">
+                        <div class="w-24 h-24 bg-gradient-to-br from-green-500 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.4 16.6L4.8 12L3.4 13.4L9.4 19.4L20.6 8.2L19.2 6.8L9.4 16.6Z" fill="white"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">CTO & Co-Founder</h3>
+                        <p class="text-green-400 font-semibold mb-4">Aerospace Engineer</p>
+                        <p class="text-gray-400 text-sm mb-4">Ex-SpaceX, 15+ years in flight control systems</p>
+                        <div class="flex justify-center space-x-2">
+                            <span class="px-2 py-1 bg-green-500/20 text-green-300 rounded-full text-xs">MIT MS</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">12 Patents</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="metric-card glass-apple-premium rounded-3xl p-8 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10"></div>
+                    <div class="relative">
+                        <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z" fill="white"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">VP Sales</h3>
+                        <p class="text-purple-400 font-semibold mb-4">Enterprise Software</p>
+                        <p class="text-gray-400 text-sm mb-4">Former Salesforce, built $50M+ ARR businesses</p>
+                        <div class="flex justify-center space-x-2">
+                            <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs">Wharton MBA</span>
+                            <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded-full text-xs">3x Exits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider-premium"></div>
+
+    <!-- Call to Action -->
+    <section class="slide-content bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-transparent via-black/20 to-black/40"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+            <div class="absolute bottom-20 right-20 w-48 h-48 bg-purple-500/20 rounded-full blur-2xl"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-6xl font-bold mb-8 section-title">Join the Revolution</h2>
+            <p class="text-2xl text-white/90 mb-12 leading-relaxed font-medium">
+                Partner with us to democratize autonomous flight and capture a massive market opportunity
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="glass-apple-premium rounded-3xl p-8 relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent rounded-3xl"></div>
+                    <div class="relative">
+                        <div class="text-4xl font-bold mb-4 premium-text">$5M</div>
+                        <div class="text-xl font-semibold">Series A Target</div>
+                        <div class="text-gray-300 mt-2">18-month runway</div>
+                        <div class="mt-4 flex justify-center space-x-2">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Validated</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">Profitable</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-apple-premium rounded-3xl p-8 relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent rounded-3xl"></div>
+                    <div class="relative">
+                        <div class="text-4xl font-bold mb-4 premium-text">25%</div>
+                        <div class="text-xl font-semibold">Equity Available</div>
+                        <div class="text-gray-300 mt-2">Strategic investors</div>
+                        <div class="mt-4 flex justify-center space-x-2">
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">Board Seat</span>
+                            <span class="px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm">Advisory</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <button class="bg-gradient-to-r from-white to-gray-100 text-indigo-600 px-12 py-4 rounded-2xl text-xl font-bold hover:from-gray-100 hover:to-white transition-all transform hover:scale-105 shadow-2xl hover:shadow-white/20">
+                    <div class="flex items-center space-x-2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 2V5L16 2V5L22 2V8L16 11V14L8 11V14L2 11V5L8 2Z" fill="currentColor"/>
+                        </svg>
+                        <span>Schedule Meeting</span>
+                    </div>
+                </button>
+                <div class="glass-apple-premium rounded-2xl py-4 px-6 inline-block">
+                    <div class="text-white/90 space-y-1">
+                        <p class="font-semibold">investors@dronespeak.ai</p>
+                        <p class="text-sm text-white/70">+1 (555) DRONE-AI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Number counting animation
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.number-highlight');
+            numbers.forEach(number => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animationPlayState = 'running';
+                        }
+                    });
+                });
+                observer.observe(number);
+            });
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            animateNumbers();
+        });
+
+        // Add scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-fade-up, .animate-slide-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(40px)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> 

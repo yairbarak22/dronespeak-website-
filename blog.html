@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DroneSpeak - Blog & Insights</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a40 35%, #2d2d60 100%);
+            --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+        }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--primary-gradient);
+            letter-spacing: -0.02em;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .glass-apple-premium {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+        
+        .section-title {
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+        .category-tag {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+    </style>
+</head>
+<body class="bg-black text-white" style="background: var(--primary-gradient);">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold">DroneSpeak</a>
+                <div class="flex space-x-8">
+                    <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="/product" class="text-gray-300 hover:text-white transition-colors">Product</a>
+                    <a href="/team" class="text-gray-300 hover:text-white transition-colors">Team</a>
+                    <a href="/investors" class="text-gray-300 hover:text-white transition-colors">Investors</a>
+                    <a href="/contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-br from-blue-900 to-purple-900">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h1 class="text-6xl md:text-8xl font-black mb-8">
+                Insights & Innovation
+            </h1>
+            <p class="text-2xl text-white/80 max-w-4xl mx-auto mb-12">
+                Explore the latest developments in AI-powered drone technology, industry trends, and thought leadership from the DroneSpeak team
+            </p>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="py-24 bg-gradient-to-br from-gray-900 to-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-8">Featured Story</h2>
+            </div>
+            
+            <div class="glass-effect rounded-3xl p-8 md:p-12">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="category-tag text-white px-4 py-2 rounded-full text-sm font-semibold">AI Technology</span>
+                            <span class="text-gray-400">December 15, 2024</span>
+                        </div>
+                        <h3 class="text-4xl font-bold mb-6">The Future of Natural Language Drone Control</h3>
+                        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                            How advanced AI models are revolutionizing the way operators interact with autonomous drones, making complex missions as simple as speaking naturally.
+                        </p>
+                        <a href="#" class="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-700 transition-colors inline-block">
+                            Read Full Article
+                        </a>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl h-64 flex items-center justify-center">
+                        <div class="text-8xl">🤖</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="py-24 bg-gradient-to-br from-slate-800 to-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-8">Latest Articles</h2>
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <button class="bg-blue-600 text-white px-6 py-3 rounded-full text-sm font-semibold">All</button>
+                    <button class="glass-effect text-gray-300 px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/20">AI & Technology</button>
+                    <button class="glass-effect text-gray-300 px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/20">Industry News</button>
+                    <button class="glass-effect text-gray-300 px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/20">Case Studies</button>
+                    <button class="glass-effect text-gray-300 px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/20">Product Updates</button>
+                </div>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="blog-card glass-effect rounded-2xl overflow-hidden">
+                    <div class="bg-gradient-to-br from-green-600 to-blue-600 h-48 flex items-center justify-center">
+                        <div class="text-6xl">🌍</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <span class="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Case Study</span>
+                            <span class="text-gray-400 text-sm">Dec 12, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Emergency Response: How AI Drones Saved Lives in California Wildfires</h3>
+                        <p class="text-gray-300 text-sm mb-4">A deep dive into how DroneSpeak-powered autonomous drones assisted first responders during the 2024 wildfire season...</p>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 font-semibold text-sm">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card glass-effect rounded-2xl overflow-hidden">
+                    <div class="bg-gradient-to-br from-purple-600 to-pink-600 h-48 flex items-center justify-center">
+                        <div class="text-6xl">⚡</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Technology</span>
+                            <span class="text-gray-400 text-sm">Dec 10, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Breaking: New GPT-4 Integration Achieves 97% Command Accuracy</h3>
+                        <p class="text-gray-300 text-sm mb-4">Our latest AI update brings unprecedented natural language understanding to drone operations...</p>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 font-semibold text-sm">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-card glass-effect rounded-2xl overflow-hidden">
+                    <div class="bg-gradient-to-br from-orange-600 to-red-600 h-48 flex items-center justify-center">
+                        <div class="text-6xl">🏭</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Industry</span>
+                            <span class="text-gray-400 text-sm">Dec 8, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Enterprise Adoption: Fortune 500 Companies Embrace Autonomous Drones</h3>
+                        <p class="text-gray-300 text-sm mb-4">Market research shows 65% of large enterprises plan to implement AI-driven drone solutions by 2025...</p>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 font-semibold text-sm">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="blog-card glass-effect rounded-2xl overflow-hidden">
+                    <div class="bg-gradient-to-br from-teal-600 to-green-600 h-48 flex items-center justify-center">
+                        <div class="text-6xl">🔒</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <span class="bg-teal-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Security</span>
+                            <span class="text-gray-400 text-sm">Dec 5, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Security First: How We Protect Sensitive Mission Data</h3>
+                        <p class="text-gray-300 text-sm mb-4">An in-depth look at DroneSpeak's enterprise-grade security measures and compliance standards...</p>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 font-semibold text-sm">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="blog-card glass-effect rounded-2xl overflow-hidden">
+                    <div class="bg-gradient-to-br from-indigo-600 to-purple-600 h-48 flex items-center justify-center">
+                        <div class="text-6xl">📊</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Product</span>
+                            <span class="text-gray-400 text-sm">Dec 3, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Product Update: Real-Time Analytics Dashboard Goes Live</h3>
+                        <p class="text-gray-300 text-sm mb-4">New dashboard provides unprecedented insights into drone performance, mission success rates, and operational efficiency...</p>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 font-semibold text-sm">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="blog-card glass-effect rounded-2xl overflow-hidden">
+                    <div class="bg-gradient-to-br from-yellow-600 to-orange-600 h-48 flex items-center justify-center">
+                        <div class="text-6xl">🎯</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Tutorial</span>
+                            <span class="text-gray-400 text-sm">Nov 30, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Getting Started: Your First Autonomous Mission in 10 Minutes</h3>
+                        <p class="text-gray-300 text-sm mb-4">Step-by-step guide to setting up and executing your first AI-powered drone mission with DroneSpeak...</p>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 font-semibold text-sm">Read More →</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-12">
+                <button class="glass-effect text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/20 transition-all">
+                    Load More Articles
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="py-24 bg-gradient-to-br from-blue-900 to-purple-900">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold mb-8">Stay Updated</h2>
+            <p class="text-2xl text-white/80 mb-12">
+                Get the latest insights on AI, drones, and autonomous systems delivered to your inbox
+            </p>
+            
+            <div class="glass-effect rounded-2xl p-8 max-w-2xl mx-auto">
+                <form class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" 
+                           placeholder="Enter your email address"
+                           class="flex-1 bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500">
+                    <button type="submit"
+                            class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-sm text-gray-400 mt-4">
+                    Join 5,000+ industry professionals. Unsubscribe anytime.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-effect">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">DroneSpeak</h3>
+                    <p class="text-gray-400">AI-powered autonomous flight technology for the enterprise.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Features</a></li>
+                        <li><a href="#" class="hover:text-white">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white">API</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/team" class="hover:text-white">Team</a></li>
+                        <li><a href="/investors" class="hover:text-white">Investors</a></li>
+                        <li><a href="/blog" class="hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Documentation</a></li>
+                        <li><a href="/contact" class="hover:text-white">Contact</a></li>
+                        <li><a href="#" class="hover:text-white">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/20 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 DroneSpeak. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Category filtering (basic implementation)
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('All') || this.textContent.includes('AI') || this.textContent.includes('Industry')) {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('button').forEach(btn => {
+                        btn.classList.remove('bg-blue-600');
+                        btn.classList.add('glass-effect');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.remove('glass-effect');
+                    this.classList.add('bg-blue-600');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

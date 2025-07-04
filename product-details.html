@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DroneSpeak - Product Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a40 35%, #2d2d60 100%);
+            --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --accent-gradient: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+        }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--primary-gradient);
+            overflow-x: hidden;
+            letter-spacing: -0.02em;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .apple-gradient {
+            background: var(--secondary-gradient);
+            position: relative;
+        }
+        
+        .apple-gradient::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .glass-apple {
+            background: var(--glass-bg);
+            backdrop-filter: blur(32px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-apple-premium {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+        
+        .section-title {
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .premium-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .number-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+        
+        .metric-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.1);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .feature-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+        
+        .pricing-card {
+            transition: all 0.4s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-black text-white" style="background: var(--primary-gradient);">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold">DroneSpeak</a>
+                <div class="flex space-x-8">
+                    <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="/investors" class="text-gray-300 hover:text-white transition-colors">Investors</a>
+                    <a href="/team" class="text-gray-300 hover:text-white transition-colors">Team</a>
+                    <a href="/contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                    <a href="#pricing" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 apple-gradient">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h1 class="text-6xl md:text-8xl font-black mb-8 animate-fade-up">
+                Revolutionary AI<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">
+                    Drone Intelligence
+                </span>
+            </h1>
+            <p class="text-2xl text-white/80 max-w-4xl mx-auto mb-12 animate-fade-up" style="animation-delay: 0.2s;">
+                Transform any commercial drone into an autonomous mission specialist through advanced natural language processing and AI-powered flight control
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center animate-fade-up" style="animation-delay: 0.4s;">
+                <button class="bg-white text-purple-600 px-10 py-4 rounded-2xl text-xl font-bold hover:bg-gray-100 transition-all transform hover:scale-105">
+                    Start Free Trial
+                </button>
+                <button class="glass-effect text-white px-10 py-4 rounded-2xl text-xl font-bold hover:bg-white/20 transition-all">
+                    Watch Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="py-24 bg-gradient-to-br from-gray-900 to-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-8">Core Technology</h2>
+                <p class="text-2xl text-gray-300">Advanced AI systems that revolutionize drone operations</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-12">
+                <div class="feature-hover glass-effect rounded-3xl p-8">
+                    <div class="text-6xl mb-6">🧠</div>
+                    <h3 class="text-2xl font-bold mb-4">Natural Language AI</h3>
+                    <p class="text-gray-300 mb-6">Advanced NLP engine understands complex mission commands in plain English with 95% accuracy</p>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li>• GPT-4 integration for command understanding</li>
+                        <li>• Context-aware mission planning</li>
+                        <li>• Multi-step task decomposition</li>
+                        <li>• Real-time instruction parsing</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-hover glass-effect rounded-3xl p-8">
+                    <div class="text-6xl mb-6">✈️</div>
+                    <h3 class="text-2xl font-bold mb-4">Autonomous Flight Control</h3>
+                    <p class="text-gray-300 mb-6">Intelligent flight systems that handle complex missions without human intervention</p>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li>• Dynamic obstacle avoidance</li>
+                        <li>• Weather-adaptive routing</li>
+                        <li>• Battery optimization algorithms</li>
+                        <li>• Emergency landing protocols</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-hover glass-effect rounded-3xl p-8">
+                    <div class="text-6xl mb-6">🔗</div>
+                    <h3 class="text-2xl font-bold mb-4">Universal Integration</h3>
+                    <p class="text-gray-300 mb-6">Seamless compatibility with leading drone manufacturers and existing workflows</p>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li>• DJI Enterprise series support</li>
+                        <li>• ArduPilot / PX4 integration</li>
+                        <li>• Autel Robotics compatibility</li>
+                        <li>• Custom API endpoints</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications -->
+    <section class="py-24 bg-gradient-to-br from-blue-900 to-purple-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-8">Technical Specifications</h2>
+                <p class="text-2xl text-blue-100">Enterprise-grade performance and reliability</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="space-y-8">
+                    <div class="glass-effect rounded-3xl p-8">
+                        <h3 class="text-3xl font-bold mb-6">AI Performance</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">Command Recognition Accuracy</span>
+                                <span class="text-2xl font-bold text-green-400">95.2%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">Processing Speed</span>
+                                <span class="text-2xl font-bold text-blue-400">&lt;30ms</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">Supported Languages</span>
+                                <span class="text-2xl font-bold text-purple-400">12+</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">Mission Complexity</span>
+                                <span class="text-2xl font-bold text-yellow-400">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect rounded-3xl p-8">
+                        <h3 class="text-3xl font-bold mb-6">Integration</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">Setup Time</span>
+                                <span class="text-2xl font-bold text-green-400">&lt;30 days</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">API Response Time</span>
+                                <span class="text-2xl font-bold text-blue-400">50ms avg</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">Uptime SLA</span>
+                                <span class="text-2xl font-bold text-purple-400">99.9%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg">Concurrent Drones</span>
+                                <span class="text-2xl font-bold text-yellow-400">100+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="glass-effect rounded-3xl p-8">
+                        <h3 class="text-3xl font-bold mb-6">Supported Platforms</h3>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center p-4 bg-white/10 rounded-xl">
+                                <div class="text-3xl mb-2">🚁</div>
+                                <div class="font-semibold">DJI Enterprise</div>
+                                <div class="text-sm text-gray-400">Matrice, Phantom 4 RTK</div>
+                            </div>
+                            <div class="text-center p-4 bg-white/10 rounded-xl">
+                                <div class="text-3xl mb-2">⚙️</div>
+                                <div class="font-semibold">ArduPilot</div>
+                                <div class="text-sm text-gray-400">Custom builds, PX4</div>
+                            </div>
+                            <div class="text-center p-4 bg-white/10 rounded-xl">
+                                <div class="text-3xl mb-2">🛸</div>
+                                <div class="font-semibold">Autel Robotics</div>
+                                <div class="text-sm text-gray-400">EVO series</div>
+                            </div>
+                            <div class="text-center p-4 bg-white/10 rounded-xl">
+                                <div class="text-3xl mb-2">🔧</div>
+                                <div class="font-semibold">Custom APIs</div>
+                                <div class="text-sm text-gray-400">Integration support</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect rounded-3xl p-8">
+                        <h3 class="text-3xl font-bold mb-6">Security & Compliance</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                <span>SOC 2 Type II Compliant</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                <span>End-to-end encryption</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                <span>FAA Part 107 compliance</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                <span>EASA regulatory compliance</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                <span>GDPR & data privacy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-24 bg-gradient-to-br from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-8">Simple, Transparent Pricing</h2>
+                <p class="text-2xl text-gray-300">Choose the plan that fits your operation</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Starter Plan -->
+                <div class="pricing-card glass-effect rounded-3xl p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Starter</h3>
+                        <div class="text-5xl font-black mb-2">$200</div>
+                        <div class="text-gray-400">per month</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                            <span>Up to 5 drones</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                            <span>Basic AI commands</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                            <span>Cloud dashboard</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                            <span>Email support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-colors">
+                        Start Free Trial
+                    </button>
+                </div>
+                
+                <!-- Professional Plan -->
+                <div class="pricing-card glass-effect rounded-3xl p-8 ring-2 ring-purple-500 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-purple-500 text-white px-6 py-2 rounded-full text-sm font-bold">Most Popular</span>
+                    </div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Professional</h3>
+                        <div class="text-5xl font-black mb-2">$500</div>
+                        <div class="text-gray-400">per month</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                            <span>Up to 25 drones</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                            <span>Advanced AI missions</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                            <span>Real-time analytics</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                            <span>Priority support</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                            <span>Custom integrations</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-purple-600 text-white py-4 rounded-xl font-bold hover:bg-purple-700 transition-colors">
+                        Start Free Trial
+                    </button>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="pricing-card glass-effect rounded-3xl p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Enterprise</h3>
+                        <div class="text-5xl font-black mb-2">Custom</div>
+                        <div class="text-gray-400">contact us</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-gold-400 rounded-full"></div>
+                            <span>Unlimited drones</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                            <span>White-label solution</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                            <span>Dedicated support team</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                            <span>On-premise deployment</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                            <span>99.9% SLA guarantee</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-yellow-600 text-black py-4 rounded-xl font-bold hover:bg-yellow-500 transition-colors">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-gradient-to-br from-slate-800 to-gray-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-8">Frequently Asked Questions</h2>
+                <p class="text-2xl text-gray-300">Everything you need to know about DroneSpeak</p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="glass-effect rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-4">How does the AI understand natural language commands?</h3>
+                    <p class="text-gray-300">DroneSpeak uses advanced NLP models trained specifically on aviation and mission planning terminology. Our AI can parse complex, multi-step commands and translate them into precise flight instructions with 95% accuracy.</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-4">Is it compatible with my existing drones?</h3>
+                    <p class="text-gray-300">Yes! DroneSpeak works with 85% of commercial drones including DJI Enterprise series, ArduPilot/PX4 systems, and Autel Robotics. We provide integration support for custom setups.</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-4">What about regulatory compliance?</h3>
+                    <p class="text-gray-300">DroneSpeak is designed with compliance in mind. We support FAA Part 107 regulations, EASA standards, and provide automated flight plan approval workflows for restricted airspace.</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-4">How quickly can I get started?</h3>
+                    <p class="text-gray-300">Most customers are operational within 30 days. This includes drone integration, team training, and initial mission setup. Our professional services team handles the entire deployment process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 apple-gradient">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold mb-8">Ready to Transform Your Operations?</h2>
+            <p class="text-2xl text-white/80 mb-12">
+                Join leading organizations already using DroneSpeak to revolutionize their drone operations
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button class="bg-white text-purple-600 px-12 py-4 rounded-2xl text-xl font-bold hover:bg-gray-100 transition-all transform hover:scale-105">
+                    Start Free Trial
+                </button>
+                <button class="glass-effect text-white px-12 py-4 rounded-2xl text-xl font-bold hover:bg-white/20 transition-all">
+                    Schedule Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-hover, .pricing-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="DroneSpeak Mission Results">
+    <title>Mission Results - DroneSpeak</title>
+    
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/results.css">
+    <link rel="stylesheet" href="styles/results-components.css">
+    <link rel="stylesheet" href="styles/results-animations.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <button class="back-button" onclick="goToHome()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="#007AFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Back to Home</span>
+                    </button>
+                </div>
+                <div class="nav-center">
+                    <h1 class="page-title">Mission Results</h1>
+                </div>
+                <div class="nav-right">
+                    <div class="completion-time">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="7" stroke="#34C759" stroke-width="1.5"/>
+                            <path d="M5 8l2 2 4-4" stroke="#34C759" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Completed at 14:37:45</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Success Header -->
+        <section class="success-header">
+            <div class="success-content">
+                <div class="success-animation">
+                    <div class="success-icon" id="successIcon">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <circle cx="32" cy="32" r="30" fill="#34C759"/>
+                            <path d="M20 32l8 8 16-16" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="success-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
+                </div>
+                <div class="success-text">
+                    <h2 class="success-title">Mission Completed Successfully</h2>
+                    <p class="success-subtitle">All objectives achieved within planned parameters</p>
+                    <div class="mission-stats">
+                        <span class="stat-item">✈️ Flight completed</span>
+                        <span class="stat-item">📸 All photos captured</span>
+                        <span class="stat-item">🔋 Battery sufficient</span>
+                        <span class="stat-item">🎯 100% success rate</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Summary Cards -->
+        <section class="summary-section">
+            <div class="summary-container">
+                <h3 class="summary-title">Mission Summary</h3>
+                <div class="summary-cards">
+                    <div class="summary-card flight-time-card">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="14" stroke="#007AFF" stroke-width="2"/>
+                                <path d="M16 8v8l6 4" stroke="#007AFF" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Flight Time</span>
+                            <span class="card-value" id="flightTimeValue">7:45 minutes</span>
+                            <span class="card-detail">3% under estimate</span>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-card distance-card">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M28 16c0 9.33-8 17.33-12 17.33S4 25.33 4 16a12 12 0 0 1 24 0z" stroke="#FF9500" stroke-width="2"/>
+                                <circle cx="16" cy="16" r="4" stroke="#FF9500" stroke-width="2"/>
+                                <path d="M16 8v16M8 16h16" stroke="#FF9500" stroke-width="1" opacity="0.5"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Distance Flown</span>
+                            <span class="card-value" id="distanceValue">427 meters</span>
+                            <span class="card-detail">Efficient path taken</span>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-card photos-card">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <rect x="4" y="8" width="24" height="16" rx="2" stroke="#34C759" stroke-width="2"/>
+                                <circle cx="16" cy="16" r="4" stroke="#34C759" stroke-width="2"/>
+                                <path d="M4 12l4-4h4l4 4" stroke="#34C759" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Photos Captured</span>
+                            <span class="card-value" id="photosValue">12 images</span>
+                            <span class="card-detail">High quality • 4K resolution</span>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-card battery-card">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <rect x="4" y="10" width="22" height="12" rx="2" stroke="#8E8E93" stroke-width="2"/>
+                                <rect x="26" y="14" width="2" height="4" rx="1" fill="#8E8E93"/>
+                                <rect x="6" y="12" width="7" height="8" rx="1" fill="#34C759"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Battery Used</span>
+                            <span class="card-value" id="batteryValue">34%</span>
+                            <span class="card-detail">66% remaining</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Results Content -->
+        <main class="results-content">
+            <!-- Photo Gallery -->
+            <section class="gallery-section">
+                <div class="gallery-header">
+                    <h3 class="gallery-title">Captured Images</h3>
+                    <div class="gallery-controls">
+                        <button class="gallery-btn" id="selectAllBtn">Select All</button>
+                        <button class="gallery-btn primary" id="downloadBtn">Download Selected</button>
+                    </div>
+                </div>
+                
+                <div class="photo-gallery" id="photoGallery">
+                    <!-- Photo 1 -->
+                    <div class="photo-item" data-photo="1" onclick="openPhotoModal(1)">
+                        <div class="photo-container">
+                            <div class="photo-placeholder">
+                                <svg width="100%" height="100%" viewBox="0 0 150 150" fill="none">
+                                    <rect width="150" height="150" fill="#F0F0F0"/>
+                                    <rect x="20" y="40" width="110" height="70" fill="#D0D0D0"/>
+                                    <rect x="30" y="50" width="15" height="25" fill="#B0B0B0"/>
+                                    <rect x="50" y="45" width="15" height="30" fill="#B0B0B0"/>
+                                    <rect x="70" y="50" width="15" height="25" fill="#B0B0B0"/>
+                                    <rect x="90" y="45" width="15" height="30" fill="#B0B0B0"/>
+                                    <rect x="110" y="50" width="15" height="25" fill="#B0B0B0"/>
+                                </svg>
+                            </div>
+                            <div class="photo-overlay">
+                                <div class="photo-info">
+                                    <span class="photo-location">North Side</span>
+                                    <span class="photo-details">15.2m • 32.0853°N</span>
+                                </div>
+                                <div class="photo-badges">
+                                    <span class="quality-badge">4K</span>
+                                </div>
+                            </div>
+                            <div class="photo-checkbox">
+                                <input type="checkbox" id="photo1" class="photo-select">
+                                <label for="photo1"></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 2 -->
+                    <div class="photo-item" data-photo="2" onclick="openPhotoModal(2)">
+                        <div class="photo-container">
+                            <div class="photo-placeholder">
+                                <svg width="100%" height="100%" viewBox="0 0 150 150" fill="none">
+                                    <rect width="150" height="150" fill="#F5F5F5"/>
+                                    <rect x="15" y="35" width="120" height="80" fill="#E0E0E0"/>
+                                    <rect x="25" y="45" width="20" height="35" fill="#C0C0C0"/>
+                                    <rect x="50" y="40" width="20" height="40" fill="#C0C0C0"/>
+                                    <rect x="75" y="45" width="20" height="35" fill="#C0C0C0"/>
+                                    <rect x="100" y="40" width="20" height="40" fill="#C0C0C0"/>
+                                </svg>
+                            </div>
+                            <div class="photo-overlay">
+                                <div class="photo-info">
+                                    <span class="photo-location">East Side</span>
+                                    <span class="photo-details">14.8m • 32.0855°N</span>
+                                </div>
+                                <div class="photo-badges">
+                                    <span class="quality-badge">4K</span>
+                                </div>
+                            </div>
+                            <div class="photo-checkbox">
+                                <input type="checkbox" id="photo2" class="photo-select">
+                                <label for="photo2"></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Repeat pattern for photos 3-12 -->
+                    <!-- Photo 3 -->
+                    <div class="photo-item" data-photo="3" onclick="openPhotoModal(3)">
+                        <div class="photo-container">
+                            <div class="photo-placeholder">
+                                <svg width="100%" height="100%" viewBox="0 0 150 150" fill="none">
+                                    <rect width="150" height="150" fill="#F8F8F8"/>
+                                    <rect x="25" y="45" width="100" height="60" fill="#D5D5D5"/>
+                                    <rect x="35" y="55" width="12" height="20" fill="#A5A5A5"/>
+                                    <rect x="52" y="50" width="12" height="25" fill="#A5A5A5"/>
+                                    <rect x="69" y="55" width="12" height="20" fill="#A5A5A5"/>
+                                    <rect x="86" y="50" width="12" height="25" fill="#A5A5A5"/>
+                                    <rect x="103" y="55" width="12" height="20" fill="#A5A5A5"/>
+                                </svg>
+                            </div>
+                            <div class="photo-overlay">
+                                <div class="photo-info">
+                                    <span class="photo-location">South Side</span>
+                                    <span class="photo-details">15.5m • 32.0857°N</span>
+                                </div>
+                                <div class="photo-badges">
+                                    <span class="quality-badge">4K</span>
+                                </div>
+                            </div>
+                            <div class="photo-checkbox">
+                                <input type="checkbox" id="photo3" class="photo-select">
+                                <label for="photo3"></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 4 -->
+                    <div class="photo-item" data-photo="4" onclick="openPhotoModal(4)">
+                        <div class="photo-container">
+                            <div class="photo-placeholder">
+                                <svg width="100%" height="100%" viewBox="0 0 150 150" fill="none">
+                                    <rect width="150" height="150" fill="#F2F2F2"/>
+                                    <rect x="20" y="40" width="110" height="70" fill="#CACACA"/>
+                                    <rect x="30" y="50" width="18" height="30" fill="#9A9A9A"/>
+                                    <rect x="53" y="45" width="18" height="35" fill="#9A9A9A"/>
+                                    <rect x="76" y="50" width="18" height="30" fill="#9A9A9A"/>
+                                    <rect x="99" y="45" width="18" height="35" fill="#9A9A9A"/>
+                                </svg>
+                            </div>
+                            <div class="photo-overlay">
+                                <div class="photo-info">
+                                    <span class="photo-location">West Side</span>
+                                    <span class="photo-details">14.9m • 32.0859°N</span>
+                                </div>
+                                <div class="photo-badges">
+                                    <span class="quality-badge">4K</span>
+                                </div>
+                            </div>
+                            <div class="photo-checkbox">
+                                <input type="checkbox" id="photo4" class="photo-select">
+                                <label for="photo4"></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional detail photos 5-12 -->
+                    <div class="photo-item" data-photo="5" onclick="openPhotoModal(5)">
+                        <div class="photo-container">
+                            <div class="photo-placeholder detail-photo">
+                                <svg width="100%" height="100%" viewBox="0 0 150 150" fill="none">
+                                    <rect width="150" height="150" fill="#EEEEEE"/>
+                                    <rect x="40" y="30" width="70" height="90" fill="#BFBFBF"/>
+                                    <rect x="50" y="40" width="10" height="15" fill="#8F8F8F"/>
+                                    <rect x="65" y="35" width="10" height="20" fill="#8F8F8F"/>
+                                    <rect x="80" y="40" width="10" height="15" fill="#8F8F8F"/>
+                                    <rect x="95" y="35" width="10" height="20" fill="#8F8F8F"/>
+                                </svg>
+                            </div>
+                            <div class="photo-overlay">
+                                <div class="photo-info">
+                                    <span class="photo-location">North Detail</span>
+                                    <span class="photo-details">16.0m • Window Detail</span>
+                                </div>
+                                <div class="photo-badges">
+                                    <span class="quality-badge">4K</span>
+                                </div>
+                            </div>
+                            <div class="photo-checkbox">
+                                <input type="checkbox" id="photo5" class="photo-select">
+                                <label for="photo5"></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Continue with remaining photos 6-12 with similar pattern -->
+                    <!-- Photos 6-12 would follow the same structure with different details -->
+                </div>
+            </section>
+
+            <!-- Decision Log -->
+            <section class="log-section">
+                <div class="log-header">
+                    <h3 class="log-title">Digital Pilot Decision Log</h3>
+                    <div class="log-controls">
+                        <button class="log-btn" id="exportLogBtn">Export Report</button>
+                        <button class="log-btn" id="detailToggleBtn">Show Details</button>
+                    </div>
+                </div>
+                
+                <div class="decision-log" id="decisionLog">
+                    <div class="log-entry completed">
+                        <div class="log-timestamp">14:37:30</div>
+                        <div class="log-icon success">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="8" fill="#34C759"/>
+                                <path d="M6 10l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="log-content">
+                            <div class="log-title-text">Mission completed successfully</div>
+                            <div class="log-description">All 4 waypoints visited, 12 photos captured with optimal quality. Flight parameters remained within safe limits throughout mission.</div>
+                            <div class="log-details">
+                                <span class="detail-item">Duration: 7:45</span>
+                                <span class="detail-item">Photos: 12/12</span>
+                                <span class="detail-item">Battery: 34% used</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="log-entry">
+                        <div class="log-timestamp">14:36:15</div>
+                        <div class="log-icon camera">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <rect x="3" y="6" width="14" height="8" rx="1" stroke="#007AFF" stroke-width="1.5"/>
+                                <circle cx="10" cy="10" r="2" stroke="#007AFF" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <div class="log-content">
+                            <div class="log-title-text">Final photos captured from west side</div>
+                            <div class="log-description">Photographed west facade from 14.8m altitude, adjusted camera settings for optimal lighting conditions due to late afternoon sun position.</div>
+                            <div class="log-details">
+                                <span class="detail-item">Altitude: 14.8m</span>
+                                <span class="detail-item">ISO: 200</span>
+                                <span class="detail-item">Exposure: 1/500s</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="log-entry">
+                        <div class="log-timestamp">14:35:20</div>
+                        <div class="log-icon wind">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M3 10h10M9 6l4 4-4 4" stroke="#FF9500" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M15 8c1.1 0 2 .9 2 2s-.9 2-2 2" stroke="#FF9500" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="log-content">
+                            <div class="log-title-text">Wind compensation applied</div>
+                            <div class="log-description">Detected 12 km/h crosswind from northeast, reduced flight speed to 2.1 m/s and adjusted hover position for camera stability.</div>
+                            <div class="log-details">
+                                <span class="detail-item">Wind: 12 km/h NE</span>
+                                <span class="detail-item">Speed: 2.1 m/s</span>
+                                <span class="detail-item">Compensation: Active</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="log-entry">
+                        <div class="log-timestamp">14:34:45</div>
+                        <div class="log-icon navigation">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 3L3 17h14L10 3z" stroke="#8E8E93" stroke-width="1.5"/>
+                                <circle cx="10" cy="13" r="1" fill="#8E8E93"/>
+                            </svg>
+                        </div>
+                        <div class="log-content">
+                            <div class="log-title-text">Waypoint 3 reached - south side approach</div>
+                            <div class="log-description">Successfully navigated to south side position, optimized camera angle for building facade photography with consideration for shadow patterns.</div>
+                            <div class="log-details">
+                                <span class="detail-item">Position: Waypoint 3</span>
+                                <span class="detail-item">Angle: Optimized</span>
+                                <span class="detail-item">Shadows: Compensated</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Action Buttons -->
+        <footer class="action-buttons">
+            <div class="buttons-container">
+                <button class="action-btn primary" onclick="shareResults()">
+                    <div class="btn-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="btn-content">
+                        <span class="btn-text">Share Results</span>
+                        <span class="btn-subtitle">Send to team</span>
+                    </div>
+                </button>
+                
+                <button class="action-btn secondary" onclick="saveToComputer()">
+                    <div class="btn-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 18a4.6 4.4 0 0 1 0-9A5 4.5 0 0 1 11 2h0l.75.75 3 3L16 7h0l.75.75L17 8v4h0a3 3 0 0 1 0 6z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 15v6M9 18l3 3 3-3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="btn-content">
+                        <span class="btn-text">Save to Computer</span>
+                        <span class="btn-subtitle">Download all files</span>
+                    </div>
+                </button>
+                
+                <button class="action-btn success" onclick="planNewMission()">
+                    <div class="btn-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"/>
+                            <path d="M12 8v8M8 12h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="btn-content">
+                        <span class="btn-text">Plan New Mission</span>
+                        <span class="btn-subtitle">Start fresh</span>
+                    </div>
+                </button>
+                
+                <button class="action-btn warning" onclick="reportIssue()">
+                    <div class="btn-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 21l6-6h12V3H3v18z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 8v4M12 16h.01" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="btn-content">
+                        <span class="btn-text">Report Issue</span>
+                        <span class="btn-subtitle">Feedback</span>
+                    </div>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Photo Modal -->
+    <div class="photo-modal" id="photoModal" style="display: none;">
+        <div class="modal-overlay" onclick="closePhotoModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Photo Details</h3>
+                <button class="modal-close" onclick="closePhotoModal()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="#8E8E93" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image" id="modalImage">
+                    <!-- High resolution image placeholder -->
+                </div>
+                <div class="modal-details" id="modalDetails">
+                    <!-- Photo metadata -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our JavaScript -->
+    <script src="scripts/results-animations.js"></script>
+    <script src="scripts/results-interactions.js"></script>
+</body>
+</html> 

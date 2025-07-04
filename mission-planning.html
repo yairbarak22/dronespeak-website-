@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="DroneSpeak Mission Planning">
+    <title>Mission Planning - DroneSpeak</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/mission-main.css">
+    <link rel="stylesheet" href="styles/mission-components.css">
+    <link rel="stylesheet" href="styles/mission-map.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Bar -->
+        <nav class="navigation">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <button class="back-button" onclick="history.back()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="#007AFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Back</span>
+                    </button>
+                </div>
+                <div class="nav-center">
+                    <h1 class="page-title">Mission Planning</h1>
+                </div>
+                <div class="nav-right">
+                    <div class="status-indicator">
+                        <div class="status-dot connected"></div>
+                        <span class="status-text">Connected</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mission Interpretation Banner -->
+        <section class="mission-banner">
+            <div class="banner-content">
+                <div class="mission-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="14" fill="#34C759"/>
+                        <path d="M12 16L15 19L20 13" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="mission-text">
+                    <h2 class="mission-interpretation">I understand: you want to photograph the blue building from 4 angles at 15 meters height</h2>
+                    <p class="mission-confidence">Confidence: 96% • Estimated flight time: 8 minutes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Layout -->
+        <main class="planning-content">
+            <!-- Map Area -->
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-controls">
+                    <button class="map-control-btn" id="satellite-btn" onclick="toggleMapType()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <rect x="2" y="2" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <button class="map-control-btn" onclick="centerMap()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M10 2v4M10 14v4M18 10h-4M6 10H2" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Information Panel -->
+            <aside class="info-panel">
+                <!-- Flight Statistics -->
+                <div class="panel-section">
+                    <h3 class="section-title">Flight Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <span class="stat-label">Flight Time</span>
+                                <span class="stat-value">8 minutes</span>
+                            </div>
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="#8E8E93" stroke-width="1.5"/>
+                                    <path d="M12 6v6l4 2" stroke="#8E8E93" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <span class="stat-label">Total Distance</span>
+                                <span class="stat-value">450m</span>
+                            </div>
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="#8E8E93" stroke-width="1.5"/>
+                                    <circle cx="12" cy="10" r="3" stroke="#8E8E93" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <span class="stat-label">Average Height</span>
+                                <span class="stat-value">15m</span>
+                            </div>
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2L2 7h20l-10-5z" stroke="#8E8E93" stroke-width="1.5"/>
+                                    <path d="M12 22v-15" stroke="#8E8E93" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card battery-card">
+                            <div class="stat-info">
+                                <span class="stat-label">Battery Usage</span>
+                                <span class="stat-value">32%</span>
+                            </div>
+                            <div class="battery-container">
+                                <div class="battery-progress">
+                                    <div class="battery-fill" style="width: 32%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission Details -->
+                <div class="panel-section">
+                    <h3 class="section-title">Mission Details</h3>
+                    <div class="mission-timeline">
+                        <div class="timeline-step completed">
+                            <div class="step-icon">✓</div>
+                            <div class="step-text">Mission planned</div>
+                        </div>
+                        <div class="timeline-step active">
+                            <div class="step-icon">2</div>
+                            <div class="step-text">Awaiting confirmation</div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-icon">3</div>
+                            <div class="step-text">Execute flight</div>
+                        </div>
+                    </div>
+                    
+                    <div class="waypoint-list">
+                        <h4 class="waypoint-title">Waypoints (4)</h4>
+                        <div class="waypoint-item">
+                            <span class="waypoint-number">1</span>
+                            <span class="waypoint-desc">North side, 15m height</span>
+                        </div>
+                        <div class="waypoint-item">
+                            <span class="waypoint-number">2</span>
+                            <span class="waypoint-desc">East side, 15m height</span>
+                        </div>
+                        <div class="waypoint-item">
+                            <span class="waypoint-number">3</span>
+                            <span class="waypoint-desc">South side, 15m height</span>
+                        </div>
+                        <div class="waypoint-item">
+                            <span class="waypoint-number">4</span>
+                            <span class="waypoint-desc">West side, 15m height</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather Information -->
+                <div class="panel-section">
+                    <h3 class="section-title">Weather Conditions</h3>
+                    <div class="weather-widget">
+                        <div class="weather-main">
+                            <div class="weather-icon">☀️</div>
+                            <div class="weather-info">
+                                <div class="temperature">23°C</div>
+                                <div class="conditions">Clear skies</div>
+                            </div>
+                        </div>
+                        <div class="weather-details">
+                            <div class="weather-detail">
+                                <span class="detail-label">Wind</span>
+                                <span class="detail-value">5 km/h NE</span>
+                            </div>
+                            <div class="weather-detail">
+                                <span class="detail-label">Visibility</span>
+                                <span class="detail-value">10+ km</span>
+                            </div>
+                        </div>
+                        <div class="flight-conditions good">
+                            <span class="condition-indicator"></span>
+                            <span class="condition-text">Excellent flight conditions</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Action Buttons -->
+        <footer class="action-footer">
+            <div class="action-buttons">
+                <button class="action-button secondary" onclick="cancelMission()">
+                    <span class="action-button-text">Cancel</span>
+                </button>
+                <button class="action-button primary-blue" onclick="modifyPlan()">
+                    <span class="action-button-text">Modify Plan</span>
+                </button>
+                <button class="action-button primary-green" onclick="confirmFlight()">
+                    <span class="action-button-text">Confirm and Start Flight</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Our JavaScript -->
+    <script src="scripts/mission-map.js"></script>
+    <script src="scripts/mission-interactions.js"></script>
+</body>
+</html> 

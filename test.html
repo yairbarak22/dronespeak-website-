@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+    <link rel="stylesheet" href="styles/variables.css">
+    <style>
+        body {
+            font-family: var(--font-family);
+            background: var(--background-primary);
+            color: var(--text-primary);
+            padding: 20px;
+        }
+        .test-box {
+            padding: 20px;
+            background: var(--ios-blue);
+            color: white;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Variables Test</h1>
+    <div class="test-box">
+        This should be blue with white text if CSS variables are working correctly.
+    </div>
+    <p>Font: --font-family</p>
+    <p>Background: --background-primary</p>
+    <p>Text: --text-primary</p>
+    <p>Blue: --ios-blue</p>
+    
+    <script>
+        console.log('Test page loaded successfully');
+        
+        // Test CSS variables access
+        const root = getComputedStyle(document.documentElement);
+        console.log('Font family:', root.getPropertyValue('--font-family'));
+        console.log('Background primary:', root.getPropertyValue('--background-primary'));
+        console.log('Text primary:', root.getPropertyValue('--text-primary'));
+        console.log('iOS blue:', root.getPropertyValue('--ios-blue'));
+    </script>
+</body>
+</html> 

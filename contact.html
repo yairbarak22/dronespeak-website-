@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DroneSpeak - Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a40 35%, #2d2d60 100%);
+            --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+        }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--primary-gradient);
+            overflow-x: hidden;
+            letter-spacing: -0.02em;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .glass-apple-premium {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+        
+        .section-title {
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .apple-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        .success-message {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: 1px solid #10b981;
+        }
+        
+        .error-message {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border: 1px solid #ef4444;
+        }
+    </style>
+</head>
+<body class="bg-black text-white" style="background: var(--primary-gradient);">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold">DroneSpeak</a>
+                <div class="flex space-x-8">
+                    <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="/product" class="text-gray-300 hover:text-white transition-colors">Product</a>
+                    <a href="/team" class="text-gray-300 hover:text-white transition-colors">Team</a>
+                    <a href="/investors" class="text-gray-300 hover:text-white transition-colors">Investors</a>
+                    <a href="#contact-form" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 apple-gradient">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h1 class="text-6xl md:text-8xl font-black mb-8 slide-in">
+                Get In Touch
+            </h1>
+            <p class="text-2xl text-white/80 max-w-4xl mx-auto mb-12 slide-in" style="animation-delay: 0.2s;">
+                Ready to revolutionize your drone operations? Let's discuss how DroneSpeak can transform your business with AI-powered autonomous flight.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Options -->
+    <section class="py-24 bg-gradient-to-br from-gray-900 to-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-8">How Can We Help?</h2>
+                <p class="text-2xl text-gray-300">Choose the best way to reach us based on your needs</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-4 gap-8 mb-16">
+                <div class="contact-card glass-effect rounded-2xl p-8 text-center">
+                    <div class="text-5xl mb-6">🏢</div>
+                    <h3 class="text-2xl font-bold mb-4">Enterprise Sales</h3>
+                    <p class="text-gray-300 mb-6">Looking to implement DroneSpeak across your organization?</p>
+                    <div class="space-y-2 text-sm text-blue-200">
+                        <p>• Custom pricing & deployment</p>
+                        <p>• Dedicated support team</p>
+                        <p>• Enterprise SLA</p>
+                    </div>
+                    <div class="mt-6">
+                        <a href="mailto:sales@dronespeak.ai" class="text-blue-400 hover:text-blue-300">sales@dronespeak.ai</a>
+                    </div>
+                </div>
+                
+                <div class="contact-card glass-effect rounded-2xl p-8 text-center">
+                    <div class="text-5xl mb-6">💰</div>
+                    <h3 class="text-2xl font-bold mb-4">Investors</h3>
+                    <p class="text-gray-300 mb-6">Interested in our Series A funding round?</p>
+                    <div class="space-y-2 text-sm text-blue-200">
+                        <p>• $5M target raise</p>
+                        <p>• 25% equity available</p>
+                        <p>• Strategic partnerships</p>
+                    </div>
+                    <div class="mt-6">
+                        <a href="mailto:investors@dronespeak.ai" class="text-purple-400 hover:text-purple-300">investors@dronespeak.ai</a>
+                    </div>
+                </div>
+                
+                <div class="contact-card glass-effect rounded-2xl p-8 text-center">
+                    <div class="text-5xl mb-6">🔧</div>
+                    <h3 class="text-2xl font-bold mb-4">Technical Support</h3>
+                    <p class="text-gray-300 mb-6">Need help with integration or troubleshooting?</p>
+                    <div class="space-y-2 text-sm text-blue-200">
+                        <p>• API documentation</p>
+                        <p>• Integration support</p>
+                        <p>• 24/7 technical help</p>
+                    </div>
+                    <div class="mt-6">
+                        <a href="mailto:support@dronespeak.ai" class="text-green-400 hover:text-green-300">support@dronespeak.ai</a>
+                    </div>
+                </div>
+                
+                <div class="contact-card glass-effect rounded-2xl p-8 text-center">
+                    <div class="text-5xl mb-6">🤝</div>
+                    <h3 class="text-2xl font-bold mb-4">Partnerships</h3>
+                    <p class="text-gray-300 mb-6">Drone manufacturer or integrator? Let's collaborate.</p>
+                    <div class="space-y-2 text-sm text-blue-200">
+                        <p>• Hardware partnerships</p>
+                        <p>• Reseller programs</p>
+                        <p>• Joint go-to-market</p>
+                    </div>
+                    <div class="mt-6">
+                        <a href="mailto:partners@dronespeak.ai" class="text-yellow-400 hover:text-yellow-300">partners@dronespeak.ai</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact-form" class="py-24 bg-gradient-to-br from-blue-900 to-purple-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <div>
+                    <h2 class="text-5xl font-bold mb-8">Send Us a Message</h2>
+                    <p class="text-2xl text-blue-100 mb-8">
+                        Fill out the form and we'll get back to you within 24 hours. For urgent matters, use the direct contact methods above.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                                <span class="text-2xl">📍</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold">San Francisco HQ</h3>
+                                <p class="text-blue-200">123 Innovation Drive, SOMA District, CA 94105</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-2xl">📞</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold">Phone</h3>
+                                <p class="text-blue-200">+1 (555) DRONE-AI</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center">
+                                <span class="text-2xl">💬</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold">Response Time</h3>
+                                <p class="text-blue-200">Within 24 hours (business days)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-3xl p-8">
+                    <!-- Message Display -->
+                    <div id="messageDisplay" class="hidden mb-6 p-4 rounded-xl"></div>
+                    
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold mb-2">Full Name *</label>
+                                <input type="text" id="name" name="name" required
+                                       class="w-full form-input rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none"
+                                       placeholder="John Smith">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required
+                                       class="w-full form-input rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none"
+                                       placeholder="john@company.com">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="company" class="block text-sm font-semibold mb-2">Company</label>
+                                <input type="text" id="company" name="company"
+                                       class="w-full form-input rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none"
+                                       placeholder="Your Company">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-semibold mb-2">Phone</label>
+                                <input type="tel" id="phone" name="phone"
+                                       class="w-full form-input rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none"
+                                       placeholder="+1 (555) 123-4567">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-semibold mb-2">Subject</label>
+                            <select id="subject" name="subject"
+                                    class="w-full form-input rounded-xl px-4 py-3 text-white bg-transparent focus:outline-none">
+                                <option value="" class="bg-gray-800">Select a topic...</option>
+                                <option value="enterprise-sales" class="bg-gray-800">Enterprise Sales Inquiry</option>
+                                <option value="technical-support" class="bg-gray-800">Technical Support</option>
+                                <option value="partnership" class="bg-gray-800">Partnership Opportunity</option>
+                                <option value="investment" class="bg-gray-800">Investment Interest</option>
+                                <option value="media" class="bg-gray-800">Media & Press</option>
+                                <option value="general" class="bg-gray-800">General Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-semibold mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="6" required
+                                      class="w-full form-input rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none resize-none"
+                                      placeholder="Tell us about your project, requirements, or questions..."></textarea>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="newsletter" name="newsletter" 
+                                   class="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                            <label for="newsletter" class="text-sm text-gray-300">
+                                Subscribe to DroneSpeak updates and product announcements
+                            </label>
+                        </div>
+                        
+                        <button type="submit" id="submitBtn"
+                                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span id="submitText">Send Message</span>
+                            <span id="loadingText" class="hidden">Sending...</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-24 bg-gradient-to-br from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-8">Visit Our Office</h2>
+                <p class="text-2xl text-gray-300">Located in the heart of San Francisco's innovation district</p>
+            </div>
+            
+            <div class="glass-effect rounded-3xl p-8">
+                <div class="aspect-w-16 aspect-h-9 bg-gray-800 rounded-2xl flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🗺️</div>
+                        <h3 class="text-2xl font-bold mb-4">Interactive Map</h3>
+                        <p class="text-gray-400 mb-6">123 Innovation Drive, SOMA District<br>San Francisco, CA 94105</p>
+                        <button class="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors">
+                            Open in Google Maps
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Form handling
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const loadingText = document.getElementById('loadingText');
+            const messageDisplay = document.getElementById('messageDisplay');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.classList.add('hidden');
+            loadingText.classList.remove('hidden');
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                const response = await fetch('/api/contact/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    // Success
+                    messageDisplay.className = 'success-message mb-6 p-4 rounded-xl text-white';
+                    messageDisplay.innerHTML = '✅ Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.';
+                    messageDisplay.classList.remove('hidden');
+                    this.reset();
+                } else {
+                    // Error
+                    messageDisplay.className = 'error-message mb-6 p-4 rounded-xl text-white';
+                    messageDisplay.innerHTML = '❌ ' + (result.error || 'Something went wrong. Please try again.');
+                    messageDisplay.classList.remove('hidden');
+                }
+            } catch (error) {
+                // Network error
+                messageDisplay.className = 'error-message mb-6 p-4 rounded-xl text-white';
+                messageDisplay.innerHTML = '❌ Network error. Please check your connection and try again.';
+                messageDisplay.classList.remove('hidden');
+            }
+            
+            // Reset button state
+            submitBtn.disabled = false;
+            submitText.classList.remove('hidden');
+            loadingText.classList.add('hidden');
+            
+            // Auto-hide message after 5 seconds
+            setTimeout(() => {
+                messageDisplay.classList.add('hidden');
+            }, 5000);
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form validation feedback
+        const inputs = document.querySelectorAll('input[required], textarea[required]');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value.trim() === '') {
+                    this.style.borderColor = '#ef4444';
+                } else {
+                    this.style.borderColor = '#10b981';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

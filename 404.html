@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | DroneSpeak</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .floating { animation: float 3s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="glass-effect">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold">DroneSpeak</a>
+                <div class="flex space-x-8">
+                    <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="/product" class="text-gray-300 hover:text-white transition-colors">Product</a>
+                    <a href="/team" class="text-gray-300 hover:text-white transition-colors">Team</a>
+                    <a href="/contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 404 Content -->
+    <main class="flex-1 flex items-center justify-center px-6">
+        <div class="text-center max-w-2xl">
+            <div class="floating mb-8">
+                <div class="text-9xl">🚁</div>
+            </div>
+            
+            <h1 class="text-8xl font-black mb-4 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                404
+            </h1>
+            
+            <h2 class="text-4xl font-bold mb-6">Drone Signal Lost</h2>
+            
+            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                It looks like this page has flown away! The drone couldn't locate the content you're looking for. 
+                Let's get you back on the right flight path.
+            </p>
+            
+            <div class="space-y-4">
+                <a href="/" 
+                   class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 mr-4">
+                    Return to Base
+                </a>
+                
+                <a href="/contact" 
+                   class="inline-block glass-effect text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/20 transition-all">
+                    Request Support
+                </a>
+            </div>
+            
+            <!-- Popular Links -->
+            <div class="mt-12 glass-effect rounded-2xl p-8">
+                <h3 class="text-2xl font-bold mb-6">Popular Destinations</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <a href="/" class="text-blue-400 hover:text-blue-300 text-lg transition-colors">🏠 Home</a>
+                    <a href="/product" class="text-blue-400 hover:text-blue-300 text-lg transition-colors">🛸 Product Details</a>
+                    <a href="/investors" class="text-blue-400 hover:text-blue-300 text-lg transition-colors">💼 Investor Presentation</a>
+                    <a href="/team" class="text-blue-400 hover:text-blue-300 text-lg transition-colors">👥 Our Team</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-effect mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-8">
+            <div class="text-center text-gray-400">
+                <p>&copy; 2024 DroneSpeak. All rights reserved.</p>
+                <p class="mt-2">AI-Powered Autonomous Flight Technology</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

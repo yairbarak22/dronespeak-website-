@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DroneSpeak - Investor Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .apple-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-apple {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .slide-content {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Hero Slide -->
+    <section class="slide-content apple-gradient">
+        <div class="text-center px-6">
+            <h1 class="text-7xl md:text-9xl font-black mb-8">DroneSpeak</h1>
+            <h2 class="text-3xl md:text-5xl font-light mb-12 text-white/90">
+                The Future of Autonomous Flight
+            </h2>
+            <p class="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+                Transforming any drone into an AI-powered autonomous mission specialist through natural language commands
+            </p>
+            <div class="mt-16">
+                <div class="text-lg text-white/60">Series A Funding Round</div>
+                <div class="text-4xl font-bold mt-2">$5M Target</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Slide -->
+    <section class="slide-content bg-gradient-to-br from-gray-900 to-slate-800">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-5xl font-bold mb-8">The Problem</h2>
+                    <div class="space-y-6 text-xl text-gray-300">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-2 h-2 bg-red-500 rounded-full mt-3"></div>
+                            <p>Drone operations require extensive technical expertise</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-2 h-2 bg-red-500 rounded-full mt-3"></div>
+                            <p>Complex waypoint programming limits operational efficiency</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-2 h-2 bg-red-500 rounded-full mt-3"></div>
+                            <p>$127B drone market hindered by accessibility barriers</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="glass-apple rounded-3xl p-8">
+                        <h3 class="text-2xl font-semibold mb-6">Current Workflow</h3>
+                        <div class="space-y-4">
+                            <div class="bg-red-500/20 p-4 rounded-xl border-l-4 border-red-500">
+                                <div class="font-semibold">1. Manual Planning</div>
+                                <div class="text-sm text-gray-400">2-4 hours per mission</div>
+                            </div>
+                            <div class="bg-yellow-500/20 p-4 rounded-xl border-l-4 border-yellow-500">
+                                <div class="font-semibold">2. Technical Setup</div>
+                                <div class="text-sm text-gray-400">30-60 minutes</div>
+                            </div>
+                            <div class="bg-orange-500/20 p-4 rounded-xl border-l-4 border-orange-500">
+                                <div class="font-semibold">3. Expert Operator Required</div>
+                                <div class="text-sm text-gray-400">$80-120/hour</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Slide -->
+    <section class="slide-content bg-gradient-to-br from-blue-900 to-purple-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl font-bold mb-8">Our Solution</h2>
+                <p class="text-2xl text-blue-100">AI-powered natural language interface for autonomous drone missions</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-apple rounded-3xl p-8 text-center">
+                    <div class="text-5xl mb-4">🗣️</div>
+                    <h3 class="text-2xl font-bold mb-4">Natural Language</h3>
+                    <p class="text-gray-300">"Patrol the perimeter and check for breaches"</p>
+                    <div class="mt-6">
+                        <div class="text-3xl font-bold text-blue-400">95%</div>
+                        <div class="text-sm text-gray-400">Accuracy Rate</div>
+                    </div>
+                </div>
+                
+                <div class="glass-apple rounded-3xl p-8 text-center">
+                    <div class="text-5xl mb-4">⚡</div>
+                    <h3 class="text-2xl font-bold mb-4">Instant Deployment</h3>
+                    <p class="text-gray-300">From command to flight in under 30 seconds</p>
+                    <div class="mt-6">
+                        <div class="text-3xl font-bold text-blue-400">30s</div>
+                        <div class="text-sm text-gray-400">Setup Time</div>
+                    </div>
+                </div>
+                
+                <div class="glass-apple rounded-3xl p-8 text-center">
+                    <div class="text-5xl mb-4">🔧</div>
+                    <h3 class="text-2xl font-bold mb-4">Universal Compatibility</h3>
+                    <p class="text-gray-300">Works with existing DJI, ArduPilot & Autel drones</p>
+                    <div class="mt-6">
+                        <div class="text-3xl font-bold text-blue-400">85%</div>
+                        <div class="text-sm text-gray-400">Market Coverage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Opportunity -->
+    <section class="slide-content bg-gradient-to-br from-purple-900 to-indigo-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl font-bold mb-8">Market Opportunity</h2>
+                <p class="text-2xl text-gray-300">A massive and rapidly growing market</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="glass-apple rounded-3xl p-8">
+                        <div class="text-6xl font-bold text-purple-400 mb-4">$127B</div>
+                        <h3 class="text-2xl font-semibold mb-2">Total Addressable Market</h3>
+                        <p class="text-gray-400">Global commercial drone market by 2025</p>
+                    </div>
+                    
+                    <div class="glass-apple rounded-3xl p-8">
+                        <div class="text-6xl font-bold text-purple-400 mb-4">42%</div>
+                        <h3 class="text-2xl font-semibold mb-2">Annual Growth Rate</h3>
+                        <p class="text-gray-400">CAGR 2023-2030</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-bold mb-8">Key Market Segments</h3>
+                    <div class="space-y-4">
+                        <div class="glass-apple rounded-xl p-6">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-semibold">Public Safety</span>
+                                <span class="text-2xl font-bold text-green-400">$23B</span>
+                            </div>
+                        </div>
+                        <div class="glass-apple rounded-xl p-6">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-semibold">Infrastructure</span>
+                                <span class="text-2xl font-bold text-blue-400">$31B</span>
+                            </div>
+                        </div>
+                        <div class="glass-apple rounded-xl p-6">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-semibold">Defense & Security</span>
+                                <span class="text-2xl font-bold text-purple-400">$45B</span>
+                            </div>
+                        </div>
+                        <div class="glass-apple rounded-xl p-6">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-semibold">Logistics</span>
+                                <span class="text-2xl font-bold text-yellow-400">$28B</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="slide-content bg-gradient-to-r from-indigo-600 to-purple-600">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-6xl font-bold mb-8">Join the Revolution</h2>
+            <p class="text-2xl text-white/90 mb-12 leading-relaxed">
+                Partner with us to democratize autonomous flight and capture a massive market opportunity
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="glass-apple rounded-3xl p-8">
+                    <div class="text-4xl font-bold mb-4">$5M</div>
+                    <div class="text-xl">Series A Target</div>
+                    <div class="text-gray-300 mt-2">18-month runway</div>
+                </div>
+                <div class="glass-apple rounded-3xl p-8">
+                    <div class="text-4xl font-bold mb-4">25%</div>
+                    <div class="text-xl">Equity Available</div>
+                    <div class="text-gray-300 mt-2">Strategic investors</div>
+                </div>
+            </div>
+            
+            <div class="space-y-4">
+                <button class="bg-white text-indigo-600 px-12 py-4 rounded-2xl text-xl font-bold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl">
+                    Schedule Meeting
+                </button>
+                <div class="text-white/80">
+                    <p>Contact: investors@dronespeak.ai</p>
+                    <p>+1 (555) DRONE-AI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
