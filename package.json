@@ -1,7 +1,7 @@
 {
   "name": "dronespeak-platform",
   "version": "1.0.0",
-  "description": "DroneSpeak - AI Autonomous Drone Mission Planning Platform",
+  "description": "DroneSpeak - AI Autonomous Drone Mission Planning Platform - Professional Website",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
