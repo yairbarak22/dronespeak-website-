@@ -233,13 +233,33 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="text-2xl font-bold premium-text">DroneSpeak</div>
-                <div class="hidden md:flex items-baseline space-x-8">
-                    <a href="#demo" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Demo</a>
-                    <a href="#features" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Features</a>
-                    <a href="#use-cases" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Use Cases</a>
+                <div class="hidden md:flex items-baseline space-x-6">
+                    <a href="/" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                    <a href="/product" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Product</a>
                     <a href="/investors" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Investors</a>
-                    <a href="#contact" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 shadow-2xl">Get Started</a>
+                    <a href="/team" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Team</a>
+                    <a href="/blog" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Blog</a>
+                    <a href="/contact" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 shadow-2xl">Contact</a>
                 </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-gray-300 hover:text-white focus:outline-none focus:text-white" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-apple-premium mt-2 mx-4 rounded-xl">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/" class="text-gray-300 hover:text-white block px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                <a href="/product" class="text-gray-300 hover:text-white block px-3 py-2 text-sm font-medium transition-colors">Product</a>
+                <a href="/investors" class="text-gray-300 hover:text-white block px-3 py-2 text-sm font-medium transition-colors">Investors</a>
+                <a href="/team" class="text-gray-300 hover:text-white block px-3 py-2 text-sm font-medium transition-colors">Team</a>
+                <a href="/blog" class="text-gray-300 hover:text-white block px-3 py-2 text-sm font-medium transition-colors">Blog</a>
+                <a href="/contact" class="text-gray-300 hover:text-white block px-3 py-2 text-sm font-medium transition-colors">Contact</a>
             </div>
         </div>
     </nav>
@@ -758,6 +778,12 @@
             el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(el);
         });
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
     </script>
 </body>
 </html> 
