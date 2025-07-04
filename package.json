@@ -8,8 +8,7 @@
     "dev": "nodemon server.js",
     "build": "npm run build:frontend",
     "build:frontend": "webpack --mode production",
-    "test": "jest",
-    "vercel-build": "npm install"
+    "test": "jest"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
