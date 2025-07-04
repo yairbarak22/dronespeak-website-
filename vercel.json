@@ -8,11 +8,5 @@
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "server.js": {
-      "runtime": "@vercel/node@18.x",
-      "maxDuration": 30
-    }
   }
 }
